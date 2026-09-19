@@ -1,1 +1,198 @@
 @import "tailwindcss";
+
+@theme {
+  --color-navy-900: #090D3B;
+  --color-navy-800: #0D1048;
+  --color-navy-700: #10145A;
+  --color-navy-deep: #080B38;
+  --color-purple-600: #302A86;
+  --color-purple-500: #4039A8;
+  --color-purple-400: #5148C8;
+  --color-orange-500: #FF6A2A;
+  --color-orange-400: #FF781C;
+  --color-red-500: #E84B30;
+  --color-cream: #F5EFE2;
+  --color-muted: #C9CBE0;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+}
+
+* {
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  * {
+    cursor: auto;
+  }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: #090D3B;
+  color: #F5EFE2;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.grain::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FF6A2A, #E84B30, #FF781C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #5148C8, #4039A8, #FF6A2A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-hero {
+  background: radial-gradient(ellipse at 30% 50%, #4039A8 0%, #10145A 40%, #090D3B 70%, #080B38 100%);
+}
+
+.bg-gradient-see {
+  background: radial-gradient(ellipse at 60% 40%, #302A86 0%, #10145A 50%, #090D3B 100%);
+}
+
+.bg-gradient-think {
+  background: radial-gradient(ellipse at 40% 60%, #4039A8 0%, #10145A 40%, #080B38 100%);
+}
+
+.bg-gradient-create {
+  background: radial-gradient(ellipse at 50% 50%, #5148C8 0%, #4039A8 30%, #10145A 60%, #090D3B 100%);
+}
+
+.bg-gradient-explore {
+  background: radial-gradient(ellipse at 70% 30%, #FF6A2A15 0%, #4039A8 40%, #10145A 70%, #090D3B 100%);
+}
+
+.clip-reveal {
+  clip-path: inset(100% 0 0 0);
+}
+
+.clip-reveal.active {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.horizontal-wipe {
+  clip-path: inset(0 100% 0 0);
+}
+
+.horizontal-wipe.active {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.vertical-wipe {
+  clip-path: inset(0 0 100% 0);
+}
+
+.vertical-wipe.active {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.3s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -15px) rotate(1deg); }
+  50% { transform: translate(-5px, -25px) rotate(-1deg); }
+  75% { transform: translate(-15px, -10px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090D3B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4039A8;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5148C8;
+}
